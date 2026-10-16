@@ -4,7 +4,7 @@ Camera-controlled browser arcade game built with **Python 3.12, Flask, MediaPipe
 
 **UI languages:** Русский · English · 中文 · Қазақша · 한국어. The language selector is available directly in the main menu and the choice is stored in the browser.
 
-Localized quick guides: [Русский](docs/README.ru.md) · [中文](docs/README.zh-CN.md) · [Қазақша](docs/README.kk.md) · [한국어](docs/README.ko.md)
+Localized quick guides: [Русский](docs/README.ru.md) · [中文](docs/README.zh-CN.md) · [Қазақша](docs/README.kk.md) · [한국어](docs/README.ko.md) · [localization policy](docs/LOCALIZATION.md)
 
 ## Screenshots
 
@@ -92,7 +92,7 @@ Source comments and implementation notes are primarily **English**. Localized us
 ## Important files
 
 - `app.py` — Flask server, MediaPipe tracking, gestures, camera lifecycle, API and shutdown.
-- `config.py` / `config.json` — validated game/tracker settings and persisted score/calibration.
+- `config.py` — validated defaults/migration; `config.example.json` is the public template, while local `config.json` stores personal calibration and score and is intentionally ignored by Git.
 - `templates/index.html` — responsive UI shell.
 - `static/game.js` — language-neutral Canvas gameplay and browser camera client.
 - `static/i18n.js` — RU/EN/ZH/KK/KO UI dictionaries.
@@ -117,4 +117,4 @@ Camera frames are processed by the locally running Flask application. The projec
 
 ## Development notes
 
-Keep gameplay code and code comments in English. Add UI text through translation keys in `static/i18n.js`; do not duplicate the entire HTML/JavaScript per language. Brief localized documentation belongs under `docs/`.
+Keep source code, identifiers, docstrings and code comments English-first. Add player-facing text through translation keys in `static/i18n.js`; do not duplicate the HTML/JavaScript per language. Brief localized guides and translation notes belong under `docs/`; see [LOCALIZATION.md](docs/LOCALIZATION.md).
