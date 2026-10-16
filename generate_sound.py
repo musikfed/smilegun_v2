@@ -68,7 +68,7 @@ def blaster(duration=0.42, f_start=2450.0, f_end=95.0):
 
 
 def finish(signal: np.ndarray, peak=0.78) -> np.ndarray:
-    """Мягкая атака и окончание без щелчков, запас громкости для наложения."""
+    """Apply click-free attack/release and leave headroom for layered playback."""
     signal = signal.copy()
     attack = min(int(SR * 0.006), len(signal))
     release = min(int(SR * 0.035), len(signal))
@@ -81,7 +81,7 @@ def finish(signal: np.ndarray, peak=0.78) -> np.ndarray:
 
 
 def charge_pulse(duration=0.38):
-    """Короткий нарастающий импульс энергии на каждое моргание."""
+    """Create a short rising energy pulse for each accepted blink."""
     n = int(SR * duration)
     t = np.arange(n) / SR
     frequency = 180 * np.power(5.5, t / duration)
@@ -94,7 +94,7 @@ def charge_pulse(duration=0.38):
 
 
 def arpeggio(notes, step=0.085, tail=0.12, peak=0.65):
-    """Чистые короткие ноты: отдельная мелодия для каждого действия."""
+    """Create clean short notes so each action can have a distinct melody."""
     signal = np.zeros(int(SR * (len(notes) * step + tail)))
     for index, frequency in enumerate(notes):
         offset = int(index * step * SR)
@@ -122,7 +122,7 @@ def miss(duration=0.15):
 
 
 def smile_shot(duration=0.48):
-    """Пружинящий радужный выстрел: смешок, искры и растущий свип."""
+    """Create a springy bright shot with laugh-like modulation and a rising sweep."""
     t = np.arange(int(SR * duration)) / SR
     frequency = 260 * np.power(4.2, t / duration)
     frequency *= 1 + 0.16 * np.sin(2 * np.pi * 18 * t)
@@ -135,7 +135,7 @@ def smile_shot(duration=0.48):
 
 
 def super_blast(duration=0.9):
-    """Супер-выстрел: падающий свип + низкий удар + шумовой всплеск."""
+    """Create the SUPER blast: falling sweep, low-frequency impact and noise burst."""
     n = int(SR * duration)
     t = np.arange(n) / SR
     f_start, f_end = 1400.0, 55.0
