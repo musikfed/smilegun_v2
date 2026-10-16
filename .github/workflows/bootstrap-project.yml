@@ -16,7 +16,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          cat .bootstrap/project.zip.b64.part-* | base64 -d > /tmp/smilegun.zip
+          cat .bootstrap/source.part-* | base64 -d > /tmp/smilegun.zip
           work="$(mktemp -d)"
           unzip -q /tmp/smilegun.zip -d "$work"
           shopt -s dotglob
