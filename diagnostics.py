@@ -80,13 +80,12 @@ def check_environment(verbose: bool = True) -> tuple[list[str], list[str]]:
 
 
 def suppress_noise(level: str = "WARNING") -> None:
-    """Гасит служебный шум в консоли, оставляя ошибки.
+    """Suppress repetitive request noise while keeping errors visible.
 
-    Главный источник — строка вида
-    `127.0.0.1 - - [дата] "GET /state HTTP/1.1" 200 -`:
-    браузер опрашивает /state каждый кадр анимации, и такая строка летит
-    десятки раз в секунду. Ошибки (5xx, падения, предупреждения) остаются
-    видны. Вернуть подробные логи: SMILEGUN_VERBOSE=1 при запуске.
+    The main source is Werkzeug access logging such as
+    `127.0.0.1 - - [date] "GET /state HTTP/1.1" 200 -`.
+    The browser polls `/state` frequently, so those lines would otherwise flood
+    the console. Set `SMILEGUN_VERBOSE=1` to restore detailed request logging.
     """
     log_level = logging.DEBUG if os.environ.get("SMILEGUN_VERBOSE") == "1" \
         else getattr(logging, level, logging.WARNING)
