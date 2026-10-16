@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#05070b">
+<title>SMILE·GUN</title>
+<style>
+:root{--bg:#05070b;--panel:#0d1117;--line:#263244;--text:#e9f2ff;--muted:#8aa0b8;--cyan:#57e6ff;--green:#55ff8a;--yellow:#ffd95b;--red:#ff5964;--pink:#ff63d8;--safe:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:Consolas,"SFMono-Regular","Noto Sans Mono","Noto Sans CJK SC",monospace;touch-action:manipulation}button,input,select{font:inherit}button,select{border:1px solid var(--line);background:#121a24;color:var(--text);padding:.65rem .85rem;border-radius:8px}button{cursor:pointer}button:active{transform:translateY(1px)}button.primary{border-color:#2f9151;background:#123521;color:#9fffb8}button.danger{border-color:#7f3139;background:#351419;color:#ffc3c8}button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none!important}
+#menu{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:clamp(14px,3vw,32px);background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px),radial-gradient(circle at 50% 20%,#102a2b 0,#06090d 46%,#030407 100%)}
+.menu-card{width:min(860px,100%);max-height:calc(100dvh - 28px);overflow:auto;text-align:center;border:1px solid #274458;background:rgba(5,10,15,.88);box-shadow:0 0 50px rgba(87,230,255,.13),inset 0 0 45px rgba(0,0,0,.5);padding:clamp(18px,4vw,40px);border-radius:16px}.logo{font-size:clamp(34px,8vw,82px);font-weight:900;letter-spacing:.11em;color:var(--green);text-shadow:0 0 18px rgba(85,255,138,.55)}.logo i{font-style:normal;color:var(--cyan)}.tagline{margin:.8rem auto 1.1rem;max-width:760px;color:var(--muted);font-size:clamp(11px,2.1vw,17px);line-height:1.6}.language-row{display:flex;justify-content:center;align-items:center;gap:8px;margin:10px 0 6px;color:var(--muted);font-size:12px}.language-row select{padding:6px 10px;min-width:180px;background:#091019;color:var(--cyan)}.gesture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0;text-align:left}.gesture{border:1px solid var(--line);padding:9px;border-radius:10px;background:#091019;font-size:12px;line-height:1.4}.gesture b{display:block;color:var(--cyan);font-size:13px}.difficulty{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin:15px 0}.difficulty button{width:44px;height:44px;padding:0}.difficulty button.active{border-color:var(--green);color:#031107;background:var(--green);font-weight:900}.menu-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.menu-actions button{min-width:200px}.best{color:var(--yellow);margin:12px 0}.menu-status{min-height:1.4em;margin-top:10px;color:var(--red);font-size:12px}
+#app{position:fixed;inset:0;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1fr);min-width:0;min-height:0;background:#05070b}.side{min-width:0;min-height:0;overflow:auto;padding:10px;border-right:1px solid var(--line);background:linear-gradient(180deg,#0e141d,#090d13);display:flex;flex-direction:column;gap:8px}.brand{display:flex;align-items:center;justify-content:space-between;gap:8px}.brand strong{letter-spacing:.12em;color:var(--green)}.camera-box{position:relative;aspect-ratio:4/3;background:#000;border:1px solid var(--line);border-radius:10px;overflow:hidden}.camera-box video,.camera-box img{width:100%;height:100%;object-fit:cover;display:block;transform:scaleX(-1)}.camera-box img{display:none}.camera-state{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.7);padding:4px 6px;border-radius:5px;font-size:10px;color:var(--muted)}.camera-controls{display:grid;grid-template-columns:1fr 1fr;gap:6px}.camera-controls .wide{grid-column:1/-1}.chips{display:flex;gap:5px;flex-wrap:wrap}.chip{font-size:10px;padding:4px 6px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:#090f16}.chip.on{color:var(--green);border-color:#2d6540}.error{color:var(--red);font-size:11px;line-height:1.35;white-space:pre-wrap}.settings{border:1px solid var(--line);border-radius:10px;background:#090f16}.settings summary{cursor:pointer;padding:9px 10px;color:var(--cyan)}.settings-body{padding:0 10px 10px;display:grid;gap:8px}.slider label{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted)}.slider b{color:var(--text)}input[type=range]{width:100%;accent-color:var(--cyan)}.legend{font-size:10px;line-height:1.45;color:var(--muted)}
+.stage-shell{position:relative;min-width:0;min-height:0;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,rgba(87,230,255,.08),transparent 55%),#030508}.game-canvas{display:block;border:1px solid #bcd5e8;border-radius:5px;box-shadow:0 0 35px rgba(87,230,255,.12);background:#020408;max-width:100%;max-height:100%;touch-action:none}.hud{position:absolute;inset:10px 12px auto 12px;pointer-events:none;display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:start;font-size:clamp(10px,1.6vw,14px);text-shadow:0 2px 5px #000}.hud-left{justify-self:start}.hud-mid{justify-self:center;text-align:center}.hud-right{justify-self:end;text-align:right}.hud strong{color:var(--yellow)}.super-wrap{width:min(32vw,260px);height:12px;border:1px solid #456;background:#07101a;border-radius:999px;overflow:hidden;margin-top:4px}.super-fill{height:100%;width:0;background:linear-gradient(90deg,#39a8ff,#55ff8a,#ffd95b,#ff5964);box-shadow:0 0 12px currentColor}.super-ready .super-wrap{animation:pulseBorder .5s infinite alternate}.super-ready .super-label{color:var(--yellow);font-weight:900}@keyframes pulseBorder{to{filter:brightness(1.7)}}.bonus-toast{position:absolute;left:50%;top:18%;transform:translateX(-50%);z-index:9;color:#fff;background:rgba(20,70,50,.88);border:1px solid var(--green);padding:8px 12px;border-radius:8px;opacity:0;pointer-events:none;font-size:clamp(11px,2vw,16px);transition:opacity .15s}.bonus-toast.show{opacity:1}.round-overlay{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.68);z-index:8;text-align:center;padding:20px}.round-overlay .big{font-size:clamp(30px,8vw,72px);color:var(--yellow);text-shadow:0 0 20px rgba(255,217,91,.5);font-weight:900}.round-overlay .sub{color:var(--muted);margin:10px auto 16px;max-width:620px}.round-overlay button{pointer-events:auto}.exit-game{position:absolute;z-index:10;left:50%;bottom:calc(10px + var(--safe));transform:translateX(-50%);min-width:130px;border-color:#72323a;background:rgba(44,14,18,.88);color:#ffc9cd;padding:7px 12px}.pause-pill{position:absolute;right:12px;bottom:calc(12px + var(--safe));z-index:7;font-size:10px;color:var(--muted);background:rgba(0,0,0,.58);padding:5px 7px;border-radius:6px;pointer-events:none}
+body.playing .side .settings,body.playing .side .legend{display:none}body.playing .side{padding:7px;gap:6px}body.playing .brand{display:none}body.playing .camera-controls .wide{display:none}
+@media(max-width:800px),(orientation:portrait){ #app{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:6px;overflow:hidden;display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:6px;max-height:150px}.brand{display:none}.camera-box{grid-row:1/3;grid-column:1;width:96px;aspect-ratio:4/3}.camera-controls{grid-column:2;grid-row:1;display:flex;gap:5px;min-width:0}.camera-controls button{padding:7px;font-size:10px;flex:1}.camera-controls .wide{display:none}.chips{grid-column:2;grid-row:2;align-content:start}.chip{font-size:9px;padding:3px 5px}.settings,.legend,.error{display:none}.stage-shell{padding:3px}.hud{inset:6px 7px auto 7px}.exit-game{bottom:calc(6px + var(--safe));font-size:11px;min-width:100px}.pause-pill{display:none}.gesture-grid{grid-template-columns:1fr 1fr}.menu-card{max-height:calc(100dvh - 14px);padding:16px}.menu-actions button{min-width:150px}.tagline{font-size:11px}}
+@media(max-width:420px){.gesture-grid{grid-template-columns:1fr}.gesture:nth-child(n+5){display:none}.difficulty button{width:38px;height:38px}.menu-actions{display:grid}.menu-actions button{width:100%}.language-row{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div id="menu">
+  <div class="menu-card">
+    <div class="logo">SMILE<i>·</i>GUN</div>
+    <div class="language-row"><span data-i18n="language_label">Language</span><select id="language-select" aria-label="Language"><option value="ru">Русский</option><option value="en">English</option><option value="zh">中文</option><option value="kk">Қазақша</option><option value="ko">한국어</option></select></div>
+    <div class="tagline" data-i18n="tagline">CAMERA MOVES THE PLAYER · FIST = SHOT · BLINKS = POWER · OPEN MOUTH = SPREAD SHOT · SMILE = TIME + LIFE + ARMOR</div>
+    <div class="gesture-grid">
+      <div class="gesture"><b data-i18n="fist_title">✊ FIST</b><span data-i18n="fist_desc">Single shot fired directly from the square.</span></div>
+      <div class="gesture"><b data-i18n="mouth_title">😮 OPEN MOUTH</b><span data-i18n="mouth_desc">Spread shot. More blink charge makes a wider burst.</span></div>
+      <div class="gesture"><b data-i18n="blink_title">😉 BLINK</b><span data-i18n="blink_desc">Charges SUPER. At 100%, smile to clear the field.</span></div>
+      <div class="gesture"><b data-i18n="smile_title">😁 SMILE</b><span data-i18n="smile_desc">+10…25 s at random, +1 life and 45 s armor.</span></div>
+      <div class="gesture"><b data-i18n="peace_title">✌ TWO FINGERS</b><span data-i18n="peace_desc">Ghost mode while the gesture is held.</span></div>
+      <div class="gesture"><b data-i18n="palms_title">👐 TWO PALMS</b><span data-i18n="palms_desc">Pause / resume.</span></div>
+    </div>
+    <div class="best"><span data-i18n="best">BEST</span>: <span id="menu-best">0</span></div>
+    <div class="difficulty"><span data-i18n="difficulty">DIFFICULTY</span><button data-diff="1">1</button><button data-diff="2">2</button><button data-diff="3">3</button><button data-diff="4">4</button><button data-diff="5">5</button></div>
+    <div class="tagline" id="difficulty-info">4 rounds</div>
+    <div class="menu-actions"><button class="primary" id="play" data-i18n="start">▶ START</button><button class="danger" id="close-app" data-i18n="close_app">✕ CLOSE APPLICATION</button></div>
+    <div class="menu-status" id="menu-status"></div>
+  </div>
+</div>
+
+<div id="app">
+  <aside class="side">
+    <div class="brand"><strong>SMILE·GUN</strong><span id="camera-source" class="chip" data-i18n="camera_off">CAMERA OFF</span></div>
+    <div class="camera-box" id="camera-box"><video id="camera-video" autoplay playsinline muted></video><img id="camera-img" alt="camera"><span class="camera-state" id="camera-state" data-i18n="camera_disabled">camera off</span></div>
+    <div class="camera-controls"><button class="primary" id="camera-start" data-i18n="camera">CAMERA</button><button class="danger" id="camera-stop" disabled data-i18n="stop">STOP</button><button class="danger wide" id="round-stop" data-i18n="to_menu">TO MENU</button></div>
+    <div class="chips"><span class="chip" id="chip-face">FACE —</span><span class="chip" id="chip-hand">HAND —</span><span class="chip" id="chip-mouth">MOUTH —</span><span class="chip" id="chip-smile">SMILE —</span><span class="chip" id="chip-peace">✌ —</span><span class="chip" id="chip-fps">FPS —</span></div>
+    <div class="error" id="camera-error"></div>
+    <details class="settings">
+      <summary data-i18n="settings">SETTINGS</summary>
+      <div class="settings-body">
+        <div class="slider"><label><span data-i18n="smile_threshold">Smile threshold</span> <b id="v-smile_threshold"></b></label><input id="smile_threshold" type="range" min="1" max="3" step=".05"></div>
+        <div class="slider"><label><span data-i18n="mouth_threshold">Open-mouth threshold</span> <b id="v-mouth_open_threshold"></b></label><input id="mouth_open_threshold" type="range" min=".12" max=".8" step=".01"></div>
+        <div class="slider"><label><span data-i18n="hand_gain">Hand gain</span> <b id="v-hand_gain"></b></label><input id="hand_gain" type="range" min=".5" max="3" step=".05"></div>
+        <div class="slider"><label><span data-i18n="blink_gain">Charge per blink</span> <b id="v-super_blink_gain"></b></label><input id="super_blink_gain" type="range" min=".05" max="1" step=".05"></div>
+        <div class="slider"><label><span data-i18n="round_duration">Base round time</span> <b id="v-level_duration"></b></label><input id="level_duration" type="range" min="10" max="50" step="1"></div>
+        <div class="slider"><label><span data-i18n="volume">Volume</span> <b id="v-volume"></b></label><input id="volume" type="range" min="0" max="1" step=".05" value=".55"></div>
+      </div>
+    </details>
+    <div class="legend" data-i18n="camera_legend">Primary camera mode is browser getUserMedia. If unavailable, the game tries OpenCV.</div>
+  </aside>
+
+  <main class="stage-shell" id="stage-shell">
+    <canvas id="game" class="game-canvas" width="960" height="720"></canvas>
+    <div class="hud" id="hud">
+      <div class="hud-left"><div><span data-i18n="round">ROUND</span> <strong id="hud-round">—</strong></div><div><span data-i18n="score">SCORE</span> <strong id="hud-score">0</strong></div><div><span data-i18n="lives">LIVES</span> <strong id="hud-lives">♥♥♥</strong></div></div>
+      <div class="hud-mid" id="super-panel"><div class="super-label" id="super-label">SUPER 0%</div><div class="super-wrap"><div class="super-fill" id="super-fill"></div></div><div id="hud-effect" data-i18n="blink_to_charge">BLINK TO CHARGE</div></div>
+      <div class="hud-right"><div><span data-i18n="time">TIME</span> <strong id="hud-time">0</strong></div><div id="hud-armor">ARMOR —</div><div id="hud-ghost">GHOST —</div></div>
+    </div>
+    <div class="bonus-toast" id="bonus-toast"></div>
+    <div class="round-overlay" id="overlay"><div><div class="big" id="overlay-title">SMILE·GUN</div><div class="sub" id="overlay-sub" data-i18n="ready">Ready to play</div><button class="primary" id="overlay-button" data-i18n="continue">CONTINUE</button></div></div>
+    <button class="exit-game" id="exit-game">✕ <span data-i18n="to_menu">TO MENU</span></button>
+    <div class="pause-pill" data-i18n="palms_pause">👐 two palms = pause</div>
+  </main>
+</div>
+
+<script src="/static/i18n.js"></script>
+<script src="/static/game.js"></script>
+</body>
+</html>

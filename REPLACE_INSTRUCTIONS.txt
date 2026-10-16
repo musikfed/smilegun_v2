@@ -1,0 +1,21 @@
+SMILE·GUN v2 — FULL FOLDER REPLACEMENT
+======================================
+
+1. Close the old SmileGun process/browser tab.
+2. Back up the old folder if you want to preserve a custom local config.
+3. Remove the old contents of D:\smilegun.
+4. Extract this archive so the paths are:
+   D:\smilegun\app.py
+   D:\smilegun\templates\index.html
+   D:\smilegun\static\...
+5. Desktop start:
+   powershell -ExecutionPolicy Bypass -File .\run.ps1
+6. Phone over Wi-Fi + front camera:
+   powershell -ExecutionPolicy Bypass -File .\run_mobile.ps1
+   Then follow README.md for the one-time local CA installation.
+
+This replacement archive keeps the migrated config.json with the existing best
+score (780) and calibration values from the supplied project.
+
+RU: Это полный архив под замену содержимого D:\smilegun. Для обычного запуска
+используйте run.ps1, для смартфона по Wi-Fi — run_mobile.ps1.

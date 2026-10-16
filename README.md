@@ -9,15 +9,15 @@ Localized quick guides: [Русский](docs/README.ru.md) · [中文](docs/REA
 ## Screenshots
 
 ### Main menu
-![SMILE·GUN menu](docs/screenshots/menu-ru.png)
+![SMILE·GUN menu](docs/screenshots/menu-ru.jpg)
 
 | Shooting range | Galaxy |
 |---|---|
-| ![Shooting range](docs/screenshots/level-1-targets.png) | ![Galaxy](docs/screenshots/level-2-galaxy.png) |
+| ![Shooting range](docs/screenshots/level-1-targets.jpg) | ![Galaxy](docs/screenshots/level-2-galaxy.jpg) |
 
 | Dodge | Side flight |
 |---|---|
-| ![Dodge](docs/screenshots/level-3-dodge.png) | ![Side flight](docs/screenshots/level-4-side.png) |
+| ![Dodge](docs/screenshots/level-3-dodge.jpg) | ![Side flight](docs/screenshots/level-4-side.jpg) |
 
 ## Controls
 
@@ -44,7 +44,7 @@ Difficulty 1–5 changes density, speed and pressure. Base round duration is con
 
 ## Windows quick start
 
-Requirements: Windows, `uv`, Python 3.12 and a webcam.
+Requirements: Windows, [`uv`](https://docs.astral.sh/uv/), Python 3.12 and a webcam.
 
 ```powershell
 cd D:\smilegun

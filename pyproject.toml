@@ -1,0 +1,17 @@
+[project]
+name = "smilegun"
+version = "0.1.0"
+description = "SmileGun webcam game"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "Flask>=3.1,<4",
+    "numpy>=1.26,<2",
+    "scipy>=1.13,<1.17",
+    "opencv-python>=4.10,<5",
+    "mediapipe==0.10.21",
+    "protobuf>=4.25.3,<5",
+    "cryptography>=43,<47",
+]
+
+[tool.uv]
+package = false
