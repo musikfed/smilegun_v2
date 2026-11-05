@@ -124,4 +124,3 @@ Keep source code, identifiers, docstrings and code comments English-first. Add p
 
 [**Architecture, translations and contact**](docs/showcase/README.md)
 
-![smilegun_v2 workflow](docs/showcase/overview.svg)
