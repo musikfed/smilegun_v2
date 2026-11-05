@@ -118,3 +118,10 @@ Camera frames are processed by the locally running Flask application. The projec
 ## Development notes
 
 Keep source code, identifiers, docstrings and code comments English-first. Add player-facing text through translation keys in `static/i18n.js`; do not duplicate the HTML/JavaScript per language. Brief localized guides and translation notes belong under `docs/`; see [LOCALIZATION.md](docs/LOCALIZATION.md).
+
+
+## Project showcase · Презентация · 11 languages
+
+[**Architecture, translations and contact**](docs/showcase/README.md)
+
+![smilegun_v2 workflow](docs/showcase/overview.svg)
