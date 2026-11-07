@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "smilegun_v2",
+  "title": "smilegun_v2",
+  "version": "0.1.0",
+  "description": "Camera-controlled browser arcade game built with Python 3.12, Flask, MediaPipe, OpenCV and Canvas. The player is a glowing square controlled by hand position; gestures and facial expressions trigger weapons, defense and time bonuses.",
+  "subtitle": null,
+  "tags": [
+    "Python"
+  ],
+  "visibility": "public",
+  "publication": "publish_on_merge",
+  "public_private_approved": false,
+  "display_mode": "interface",
+  "status": "Черновик — ожидает проверки",
+  "repo_url": "https://github.com/musikfed/smilegun_v2",
+  "screenshots": [
+    "vitrine/screenshots/main.jpg",
+    "vitrine/screenshots/extra-1.jpg",
+    "vitrine/screenshots/extra-2.jpg"
+  ],
+  "cover": "vitrine/generated/cover.svg",
+  "cover_type": "schematic-not-screenshot",
+  "screenshot_source": "original-repository-file"
+}
